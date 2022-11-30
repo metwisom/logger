@@ -1,16 +1,16 @@
-import { write } from "./write";
+import { resetPrefix, setPrefix, write } from "./write";
 
 
-export { write };
-
-export function log (text: string) {
+const log = (text: string) => {
 	write(text, "white", "log");
-}
+};
 
-export function warn (text: string) {
+const warn = (text: string) => {
 	write(text, "orange", "warn");
-}
+};
 
-export function error (text: string) {
+const error = (text: string) => {
 	write(text, "red", "error");
-}
+};
+
+export const Logger = { setPrefix, resetPrefix, write, log, warn, error };
