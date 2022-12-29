@@ -1,6 +1,5 @@
 import { resetPrefix, setPrefix, write, enable, disable } from "./write";
 
-
 const log = (text: string) => {
 	write(text, "white", "log");
 };

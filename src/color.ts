@@ -1,4 +1,10 @@
-export const dimColorList = {
+export type LoggerColor = "black" | "red" | "green" | "orange" | "blue" | "purple" | "cyan" | "white" | "reset";
+
+type AvailableColor = {
+	[key in LoggerColor]: string;
+};
+
+export const dimColorList: AvailableColor = {
 	black: "\u001b[0;30m",
 	red: "\u001b[0;31m",
 	green: "\u001b[0;32m",
@@ -10,7 +16,7 @@ export const dimColorList = {
 	reset: "\u001b[0;39m",
 };
 
-export const boldColorList: { [index in keyof typeof dimColorList]: string; } = {
+export const boldColorList: AvailableColor = {
 	black: "\u001b[1;30m",
 	red: "\u001b[1;31m",
 	green: "\u001b[1;32m",

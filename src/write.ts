@@ -1,7 +1,6 @@
-import { boldColorList, dimColorList } from "./color";
+import { LoggerColor, boldColorList, dimColorList } from "./color";
 
 
-type color = keyof typeof dimColorList & keyof typeof dimColorList;
 type type = "write" | "log" | "warn" | "error";
 
 let prefix = "";
@@ -16,14 +15,15 @@ export function resetPrefix () {
 
 let isEnabled = true;
 
-export function enable(){
+export function enable () {
 	isEnabled = true;
 }
-export function disable(){
+
+export function disable () {
 	isEnabled = false;
 }
 
-export function write (text: string, color: color, type: type = "write") {
+export function write (text: string, color: LoggerColor, type: type = "write") {
 	const typeOutput = type.toUpperCase() + new Array(7).join(" ").slice(type.length, 10);
 	const date = new Date().toISOString();
 	const localPrefix = prefix != "" ? prefix + " - " : "";
@@ -34,8 +34,8 @@ export function write (text: string, color: color, type: type = "write") {
 		`${date} - ${localPrefix}${text}\r\n` +
 		dimColorList.reset;
 	if (type === "error") {
-		if(isEnabled) process.stderr.write(messageBody);
+		if (isEnabled) process.stderr.write(messageBody);
 	} else {
-		if(isEnabled) process.stdout.write(messageBody);
+		if (isEnabled) process.stdout.write(messageBody);
 	}
 }
