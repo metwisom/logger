@@ -14,6 +14,15 @@ export function resetPrefix () {
 	prefix = "";
 }
 
+let isEnabled = true;
+
+export function enable(){
+	isEnabled = true;
+}
+export function disable(){
+	isEnabled = false;
+}
+
 export function write (text: string, color: color, type: type = "write") {
 	const typeOutput = type.toUpperCase() + new Array(7).join(" ").slice(type.length, 10);
 	const date = new Date().toISOString();
@@ -25,8 +34,8 @@ export function write (text: string, color: color, type: type = "write") {
 		`${date} - ${localPrefix}${text}\r\n` +
 		dimColorList.reset;
 	if (type === "error") {
-		process.stderr.write(messageBody);
+		if(isEnabled) process.stderr.write(messageBody);
 	} else {
-		process.stdout.write(messageBody);
+		if(isEnabled) process.stdout.write(messageBody);
 	}
 }

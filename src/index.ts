@@ -1,4 +1,4 @@
-import { resetPrefix, setPrefix, write } from "./write";
+import { resetPrefix, setPrefix, write, enable, disable } from "./write";
 
 
 const log = (text: string) => {
@@ -13,4 +13,4 @@ const error = (text: string) => {
 	write(text, "red", "error");
 };
 
-export const Logger = { setPrefix, resetPrefix, write, log, warn, error };
+export const Logger = { enable, disable, setPrefix, resetPrefix, write, log, warn, error };
