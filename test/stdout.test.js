@@ -5,11 +5,11 @@ const {spawn} = require('child_process');
 // Run using Jest
 
 describe('logger behaviour', () => {
-    it('test write', done => {
+    it('test logger', done => {
         const testAppFilePath = path.join(__dirname, 'log.write.js',)
         const testApp = spawn('node', [testAppFilePath])
         testApp.stdout.on('data', data => {
-            expect(data.toString().match(/WRITE .*? - Test write cyan/)).not.toBeNull();
+            expect(data.toString().match(/WRITE .*? - Test logger cyan/)).not.toBeNull();
             testApp.kill('SIGINT')
             done()
         })
@@ -18,7 +18,7 @@ describe('logger behaviour', () => {
         const testAppFilePath = path.join(__dirname, 'log.prefix.js',)
         const testApp = spawn('node', [testAppFilePath])
         testApp.stdout.on('data', data => {
-            expect(data.toString().match(/WRITE .*? - some_prefix - Test write cyan/)).not.toBeNull();
+            expect(data.toString().match(/WRITE .*? - some_prefix - Test logger cyan/)).not.toBeNull();
             testApp.kill('SIGINT')
             done()
         })

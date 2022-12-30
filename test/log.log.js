@@ -1,2 +1,3 @@
 const {Logger} = require("../dist/index");
-Logger.log("Test log");
+const logger = new Logger()
+logger.log("Test log");

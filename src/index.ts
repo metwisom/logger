@@ -1,15 +1,16 @@
-import { resetPrefix, setPrefix, write, enable, disable } from "./write";
+import { Logger } from "./logger";
 
-const log = (text: string) => {
-	write(text, "white", "log");
+
+Logger.prototype.log = function (text: string) {
+	this.write(text, "white", "log");
 };
 
-const warn = (text: string) => {
-	write(text, "orange", "warn");
+Logger.prototype.warn = function (text: string) {
+	this.write(text, "orange", "warn");
 };
 
-const error = (text: string) => {
-	write(text, "red", "error");
+Logger.prototype.error = function (text: string) {
+	this.write(text, "red", "error");
 };
 
-export const Logger = { enable, disable, setPrefix, resetPrefix, write, log, warn, error };
+export { Logger };

@@ -1,2 +1,3 @@
 const {Logger} = require("../dist/index");
-Logger.write("Test write cyan", "cyan");
+const logger = new Logger()
+logger.write("Test logger cyan", "cyan");

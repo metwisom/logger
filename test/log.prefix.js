@@ -1,3 +1,4 @@
 const {Logger} = require("../dist/index");
-Logger.setPrefix('some_prefix')
-Logger.write("Test write cyan", "cyan");
+const logger = new Logger()
+logger.setPrefix('some_prefix')
+logger.write("Test logger cyan", "cyan");
