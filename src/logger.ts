@@ -22,7 +22,7 @@ Logger.prototype.disable = function () {
 };
 
 
-Logger.prototype.write = function (text: string, color: LoggerColor, type: type = "write") {
+Logger.prototype.write = function (color: LoggerColor, type: type = "write", ...texts: any[]) {
 	const typeOutput = type.toUpperCase() + new Array(7).join(" ").slice(type.length, 10);
 	const date = new Date().toISOString();
 	const localPrefix = this.prefix != "" ? this.prefix + " - " : "";
@@ -30,8 +30,9 @@ Logger.prototype.write = function (text: string, color: LoggerColor, type: type 
 		`${typeOutput}` +
 		boldColorList.reset +
 		(dimColorList[color] || dimColorList.reset) +
-		`${date} - ${localPrefix}${text}\r\n` +
+		`${date} - ${localPrefix}${texts.map(item => typeof item == 'object' ? JSON.stringify(item) : item).join(" ")}\r\n` +
 		dimColorList.reset;
+	//console.log('|'+texts.join(' ')+'|')
 	if (type === "error") {
 		if (this.isEnabled) process.stderr.write(messageBody);
 	} else {

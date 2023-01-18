@@ -27,7 +27,7 @@ describe('logger behaviour', () => {
         const testAppFilePath = path.join(__dirname, 'log.log.js',)
         const testApp = spawn('node', [testAppFilePath])
         testApp.stdout.on('data', data => {
-            expect(data.toString().match(/LOG .*? - Test log/)).not.toBeNull();
+            expect(data.toString().match(/LOG .*? - Test log 1 Test log 2 \{"test_obj":1}/)).not.toBeNull();
             testApp.kill('SIGINT')
             done()
         })
