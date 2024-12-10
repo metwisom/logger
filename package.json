@@ -1,12 +1,12 @@
 {
-  "name": "@metwisom/logger",
-  "version": "3.0.0",
+  "name": "@airnet/logger",
+  "version": "1.0.4",
   "description": "Simple logger",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/metwisom/logger.git"
+    "url": "https://gitlab.airnet.ru/npm/logger"
   },
   "scripts": {
     "build": "tsc",

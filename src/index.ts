@@ -1,16 +1,19 @@
-import { Logger } from "./logger";
+import { ProtoLogger } from "./logger";
 
 
-Logger.prototype.log = function (...text: any[]) {
-	this.write("white", "log", ...text);
-};
+class Logger extends ProtoLogger {
+	log (...text: any[]) {
+		this.write("log", ...text);
+	}
 
-Logger.prototype.warn = function (...text: any[]) {
-	this.write("orange", "warn", ...text);
-};
+	warn (...text: any[]) {
+		this.write("warn", ...text);
+	}
 
-Logger.prototype.error = function (...text: any[]) {
-	this.write("red", "error", ...text);
-};
+	error (...text: any[]) {
+		this.write("error", ...text);
+	}
+}
+
 
 export { Logger };
