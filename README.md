@@ -31,7 +31,11 @@ log.warn("Warn line 6")
 log.write("custom","Custom line 7")
 // "CUSTOM     2024-12-10T10:20:45.242Z - Custom line 7"
 
-
-
+const clone = log.clone()
+clone.setPrefix('clone_prefix')
+log.write("custom","Custom line 7")
+clone.write("custom","Custom line 7")
+// "CUSTOM     2024-12-10T10:20:45.242Z - Custom line 7"
+// "CUSTOM     2024-12-10T10:20:45.242Z - clone_prefix - Custom line 7"
 
 ```

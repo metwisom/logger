@@ -25,7 +25,7 @@ class ProtoLogger {
 			return;
 		}
 		const typeOutput = type.toUpperCase() + new Array(12).join(" ").slice(type.length, 12);
-		const date = new Date(new Date().getTime() + (3 * 60 * 60 * 1000)).toISOString();
+		const date = new Date(new Date().getTime() - (new Date().getTimezoneOffset() * 60 * 1000)).toISOString();
 		const localPrefix = this.prefix != "" ? this.prefix + " - " : "";
 		const messageBody = `${typeOutput}${date} - ${localPrefix}${texts.map(item => typeof item == "object" ? JSON.stringify(item) : item).join(" ")}\r\n`;
 		if (type === "error") {

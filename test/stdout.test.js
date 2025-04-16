@@ -23,6 +23,20 @@ describe('logger behaviour', () => {
             done()
         })
     })
+    it('test clone', done => {
+        const testAppFilePath = path.join(__dirname, 'log.clone.js',)
+        const testApp = spawn('node', [testAppFilePath])
+        let last = ''
+        testApp.stdout.on('data', data => {
+            if(last !== ''){
+                expect(data.toString().split(' - ')[1] !== last).toBeTruthy();
+                testApp.kill('SIGINT')
+                done()
+            }
+            last = data.toString().split(' - ')[1]
+
+        })
+    })
     it('test log', done => {
         const testAppFilePath = path.join(__dirname, 'log.log.js',)
         const testApp = spawn('node', [testAppFilePath])

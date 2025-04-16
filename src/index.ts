@@ -13,6 +13,10 @@ class Logger extends ProtoLogger {
 	error (...text: any[]) {
 		this.write("error", ...text);
 	}
+
+	clone():ProtoLogger{
+		return Object.assign(new Logger(),structuredClone(this));
+	}
 }
 
 
