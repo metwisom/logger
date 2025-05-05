@@ -37,11 +37,20 @@ describe('logger behaviour', () => {
 
         })
     })
+    it('test level', done => {
+        const testAppFilePath = path.join(__dirname, 'log.level.js',)
+        const testApp = spawn('node', [testAppFilePath])
+        testApp.stdout.on('data', data => {
+            expect(data.toString().match(/WARN .*? - 2/)).not.toBeNull();
+            testApp.kill('SIGINT')
+            done()
+        })
+    })
     it('test log', done => {
         const testAppFilePath = path.join(__dirname, 'log.log.js',)
         const testApp = spawn('node', [testAppFilePath])
         testApp.stdout.on('data', data => {
-            expect(data.toString().match(/LOG .*? - Test log 1 Test log 2 \{"test_obj":1}/)).not.toBeNull();
+            expect(data.toString().match(/LOG .*? - Test log 1 Test log 2 \{ test_obj: 1 }/)).not.toBeNull();
             testApp.kill('SIGINT')
             done()
         })

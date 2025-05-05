@@ -1,7 +1,18 @@
 # Logger
 
-###### Example
 ```
+PASS  test/stdout.test.js
+logger behaviour
+✓ test logger (49 ms)
+✓ test prefix (37 ms)
+✓ test clone (43 ms)
+✓ test log (76 ms)
+✓ test warn (42 ms)
+✓ test error (36 ms)
+```
+
+###### Example
+```js
 import {Logger} from "@metwisom/logger";
 
 const log = new Logger();
@@ -37,5 +48,10 @@ log.write("custom","Custom line 7")
 clone.write("custom","Custom line 7")
 // "CUSTOM     2024-12-10T10:20:45.242Z - Custom line 7"
 // "CUSTOM     2024-12-10T10:20:45.242Z - clone_prefix - Custom line 7"
+
+log.setLevel('warn')
+log.log(1)
+log.warn(2)
+// "WARN       2025-05-05T17:41:00.324Z - 2"
 
 ```
