@@ -3,12 +3,13 @@
 ```
 PASS  test/stdout.test.js
 logger behaviour
-✓ test logger (49 ms)
-✓ test prefix (37 ms)
-✓ test clone (43 ms)
-✓ test log (76 ms)
-✓ test warn (42 ms)
-✓ test error (36 ms)
+✓ test logger (35 ms)
+✓ test prefix (38 ms)
+✓ test clone (28 ms)
+✓ test level (28 ms)
+✓ test log (27 ms)
+✓ test warn (25 ms)
+✓ test error (28 ms)
 ```
 
 ###### Example
@@ -54,4 +55,9 @@ log.log(1)
 log.warn(2)
 // "WARN       2025-05-05T17:41:00.324Z - 2"
 
+```
+
+###### Usages
+```bash
+bun index.ts > log.log 2> err.log
 ```
